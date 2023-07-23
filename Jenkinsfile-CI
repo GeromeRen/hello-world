@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Git Clone') {
+    stage('Checkout') {
       steps {
         git 'https://github.com/GeromeRen/hello-world.git'
       }
