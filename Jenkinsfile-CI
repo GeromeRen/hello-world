@@ -4,6 +4,7 @@ pipeline {
     stage('Git Clone') {
       steps {
         git 'https://github.com/GeromeRen/hello-world.git'
+      }
     }
   }
 
