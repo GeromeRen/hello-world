@@ -13,10 +13,21 @@ pipeline {
         /opt/maven/bin/mvn --version
         /opt/maven/bin/mvn clean install
         """.stripIndent()
+      }
+    }
 
+    stage('Build Image and Publish Artifact with Ansible') {
+      steps {
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server-1', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''whoami;
+ls -ail /opt/docker;
+ansible-playbook /opt/docker/create_image_regapp.yml''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+      }
+    }
+
+    stage('Queue CD pipeline') {
+      steps {
         build job: 'RegApp_CD_Job'
       }
     }
   }
-
 }
