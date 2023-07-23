@@ -11,10 +11,8 @@ pipeline {
       steps {
         sh """
         ssh somewhere <<EOF
-        export MAVEN_HOME=/opt/maven
-        export PATH=$PATH:$MAVEN_HOME/bin
-        mvn --version
-        mvn clean install
+        /opt/maven/bin/mvn --version
+        /opt/maven/bin/clean install
         EOF
         """.stripIndent()
       }
