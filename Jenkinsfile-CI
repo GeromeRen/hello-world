@@ -6,6 +6,12 @@ pipeline {
         git 'https://github.com/GeromeRen/hello-world.git'
       }
     }
+
+    stage('Build') {
+      steps {
+        sh "mvn clean install"
+      }
+    }
   }
 
 }
