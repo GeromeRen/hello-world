@@ -9,12 +9,14 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''
+        sh """
+        ssh somewhere <<EOF
         export MAVEN_HOME=/opt/maven
         export PATH=$PATH:$MAVEN_HOME/bin
         mvn --version
         mvn clean install
-        ‘’‘
+        EOF
+        """.stripIndent()
       }
     }
   }
