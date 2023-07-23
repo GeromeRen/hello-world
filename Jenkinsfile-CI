@@ -12,7 +12,6 @@ pipeline {
         sh """
         /opt/maven/bin/mvn --version
         /opt/maven/bin/mvn clean install
-        EOF
         """.stripIndent()
 
         build job: 'RegApp_CD_Job'
