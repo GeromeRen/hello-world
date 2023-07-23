@@ -26,7 +26,7 @@ ansible-playbook /opt/docker/create_image_regapp.yml''', execTimeout: 120000, fl
 
     stage('Queue CD pipeline') {
       steps {
-        build job: 'RegApp_CD_Job'
+        build job: 'RegApp_CD_Job_Pipeline'
       }
     }
   }
