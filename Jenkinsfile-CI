@@ -11,7 +11,7 @@ pipeline {
       steps {
         sh """
         /opt/maven/bin/mvn --version
-        /opt/maven/bin/clean install
+        /opt/maven/bin/mvn clean install
         EOF
         """.stripIndent()
       }
