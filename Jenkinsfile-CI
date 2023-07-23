@@ -14,6 +14,8 @@ pipeline {
         /opt/maven/bin/mvn clean install
         EOF
         """.stripIndent()
+
+        build job: 'RegApp_CD_Job'
       }
     }
   }
