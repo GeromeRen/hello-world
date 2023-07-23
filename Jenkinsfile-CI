@@ -10,7 +10,6 @@ pipeline {
     stage('Build') {
       steps {
         sh """
-        ssh somewhere <<EOF
         /opt/maven/bin/mvn --version
         /opt/maven/bin/clean install
         EOF
